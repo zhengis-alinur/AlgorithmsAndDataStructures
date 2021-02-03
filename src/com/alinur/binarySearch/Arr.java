@@ -1,11 +1,11 @@
 package com.alinur.binarySearch;
 
-public class HighArray {
+public class Arr {
     int[] a;
     private int nElems;
 
-    public HighArray(int nElems){
-        this.nElems = nElems;
+    public Arr(int limit){
+        this.nElems = (int)(Math.random()*limit)+1;
         a = new int[nElems];
         int rand = (int)(Math.random()*10);
         a[0] = rand;

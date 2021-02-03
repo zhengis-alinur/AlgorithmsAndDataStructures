@@ -1,4 +1,4 @@
-package com.alinur.bubbleSort;
+package com.alinur.selectSort;
 
 public class Arr {
     int[] a;
@@ -15,27 +15,30 @@ public class Arr {
         return nElems;
     }
 
-    public void bubbleSort()
+    public void selectSort()
     {
         print();
         int out, in;
-        for(out = nElems - 1; out > 1; out--){ // Внешний цикл (обратный)
-            for(in = 0; in < out; in++){ // Внутренний цикл (прямой)
-                if( a[in] > a[in + 1] ) // Порядок нарушен?
-                    swap(in, in + 1); // Поменять местами
+        for(out = 0; out < nElems - 2; out++){ // Внешний цикл (обратный)
+            int min = out;
+            for(in = out + 1; in < nElems; in++){ // Внутренний цикл (прямой)
+                if(a[min] > a[in]){
+                    min = in;
+                }
             }
+            swap(out, min);
             print();
         }
     }
     private void swap(int i, int j){
-        int temp = a[i + 1];
+        int temp = a[j];
         a[j] = a[i];
         a[i] = temp;
     }
 
     public void print(){
         for(int i = 0; i < nElems; i++){
-            System.out.print(a[i] + " ");
+            System.out.print(a[i]+" ");
         }
         System.out.println();
     }

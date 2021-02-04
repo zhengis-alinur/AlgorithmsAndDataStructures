@@ -40,6 +40,23 @@ public class Arr {
         }
     }
 
+    private int recFind(long searchKey, int lowerBound, //рекурсивный поиск
+                        int upperBound) {
+        int curIn;
+        curIn = (lowerBound + upperBound) / 2;
+        if (a[curIn] == searchKey)
+            return curIn; // Элемент найден
+        else if (lowerBound > upperBound)
+            return nElems; // Элемент не найден
+        else // Деление диапазона
+        {
+            if (a[curIn] < searchKey) // В верхней половине
+                return recFind(searchKey, curIn + 1, upperBound);
+            else // В нижней половине
+                return recFind(searchKey, lowerBound, curIn - 1);
+        }
+    }
+
     public void print(){
         for(int i = 0; i < nElems; i++){
             System.out.print(a[i]+" ");
